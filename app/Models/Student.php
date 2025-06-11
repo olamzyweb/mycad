@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    protected $fillable = [
+    'user_id',
+    'school_id',
+    'first_name',
+    'last_name',
+    'email',
+    'admission_number',
+    'date_of_birth',
+    'gender',
+];
     public function school()
     {
         return $this->belongsTo(School::class);
@@ -26,4 +36,9 @@ class Student extends Model
     {
         return $this->hasMany(Result::class);
     }
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 }
