@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\ClassroomController;
+use App\Http\Controllers\API\SubjectController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -28,6 +29,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/classrooms/{id}', [ClassroomController::class, 'update']);
     Route::delete('/classrooms/{id}', [ClassroomController::class, 'destroy']);
     Route::post('/logout', [AuthController::class, 'logout']);
+// protected subjects routes
+    Route::get('/subjects', [SubjectController::class, 'index']);
+Route::post('/subjects', [SubjectController::class, 'store']);
+Route::get('/subjects/{id}', [SubjectController::class, 'show']);
+Route::put('/subjects/{id}', [SubjectController::class, 'update']);
+Route::delete('/subjects/{id}', [SubjectController::class, 'destroy']);
 
     // Add other protected routes here
 });
