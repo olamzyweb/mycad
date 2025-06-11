@@ -3,10 +3,13 @@
 use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\SubadminAssignmentController;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\ClassroomController;
 use App\Http\Controllers\API\SubjectController;
+
+// use App\Http\Controllers\API\SubadminAssignmentController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -35,6 +38,8 @@ Route::post('/subjects', [SubjectController::class, 'store']);
 Route::get('/subjects/{id}', [SubjectController::class, 'show']);
 Route::put('/subjects/{id}', [SubjectController::class, 'update']);
 Route::delete('/subjects/{id}', [SubjectController::class, 'destroy']);
-
+//protected subadmin assignment routes
+   Route::post('/subadmin/assign', [SubadminAssignmentController::class, 'assign']);
+Route::get('/subadmin/classrooms', [SubadminAssignmentController::class, 'listAssignedClassrooms']);
     // Add other protected routes here
 });
